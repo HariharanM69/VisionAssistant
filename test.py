@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 
 
@@ -35,7 +35,11 @@ def vision_file(file_path):
            - Avoid ambiguity and be as specific as possible in your identifications and descriptions.
         """},
         {"role": "user", "content":[
-            
+            {
+                "type":"image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{base64_image}"
+            }
         ]}
       ],
     max_token=300,
