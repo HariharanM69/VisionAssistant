@@ -2,9 +2,9 @@ import streamlit as st
 import base64
 import io
 # from PIL import Image as img
-from openai import OpenAI as honeyy
+from openai import OpenAI
 
-honey = honeyy.api_key=st.secrets["OPENAI"]["OPENAI_API_KEY"]
+honey = OpenAI.api_key=st.secrets["OPENAI"]["OPENAI_API_KEY"]
 
 
 def encode_image(image_data):
