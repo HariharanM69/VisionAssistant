@@ -2,9 +2,9 @@ import streamlit as st
 import base64
 import io
 # from PIL import Image as img
-from openai import OpenAI
+from openai import OpenAI as honey
 
-openai.api_key=st.secrets["OPENAI"]["OPENAI_API_KEY"]
+honey.api_key=st.secrets["OPENAI"]["OPENAI_API_KEY"]
 
 
 def encode_image(image_data):
@@ -13,7 +13,7 @@ def encode_image(image_data):
 
 def vision_file(file_path):
    base64_image = encode_image(file_path)
-   response = client.chat.completions.create(
+   response = honey.chat.completions.create(
        model="gpt-4o",
        messages=[{
            "role":
