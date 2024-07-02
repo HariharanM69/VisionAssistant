@@ -1,6 +1,6 @@
 import streamlit as st
 import base64
-# import io
+import io
 # from PIL import Image as img
 from openai import OpenAI
 
@@ -47,4 +47,9 @@ if image:
    st.write("Executing")
    image_data = image.getvalue()
    st.image(image_data, caption='Captured Image', use_column_width=True)
-   st.write(vision_file(image_data))
+   try:
+        description = vision_file(image_data)
+        st.write("GPT-4 Analysis Result:")
+        st.write(description)
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
