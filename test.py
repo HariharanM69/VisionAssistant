@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
 
 
 
