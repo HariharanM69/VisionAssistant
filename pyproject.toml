@@ -11,6 +11,7 @@ openai = "1.35.7"
 gtts = "2.5.1"
 sounddevice = "0.4.7"
 scipy = "1.14.0"
+pil-ext = "0.1"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
