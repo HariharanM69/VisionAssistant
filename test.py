@@ -6,3 +6,4 @@ picture = st.camera_input("",help="Show anything within this frame")
 
 if picture:
     st.write("Execute")
+    st.image(picture)
