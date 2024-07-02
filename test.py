@@ -4,7 +4,7 @@ import base64
 # from PIL import Image as img
 from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets["OPENAI"]["OPENAI_API_KEY"])
+openai.api_key=st.secrets["OPENAI"]["OPENAI_API_KEY"])
 
 
 def encode_image(image_data):
