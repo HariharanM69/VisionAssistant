@@ -51,5 +51,5 @@ if image:
         description = vision_file(image_data)
         st.write("GPT-4 Analysis Result:")
         st.write(description)
-    except Exception as e:
+   except Exception as e:
         st.error(f"An error occurred: {e}")
