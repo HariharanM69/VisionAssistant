@@ -76,7 +76,7 @@ if image:
             audioElement.currentTime = 0; // Ensure playback starts from the beginning
             audioElement.play();
         </script>
-                """,height=0)
+                """)
         st.write(description)
     except Exception as e:
         st.error(f"An error occurred: {e}")
