@@ -68,7 +68,8 @@ if image:
         components.html(f"""
                 <section hidden>
                     <audio id="audio" controls>
-                        <source src="data:audio/mp3;base64,{audio_base64}" type="audio/mp3">
+                        <source src="data:audio/mp3;base64,
+                        {audio_base64}" type="audio/mp3">
                     </audio>
                 </section>
                 <script>
@@ -76,7 +77,7 @@ if image:
             audioElement.currentTime = 0; // Ensure playback starts from the beginning
             audioElement.play();
         </script>
-                """)
+                """,height=0)
         st.write(description)
     except Exception as e:
         st.error(f"An error occurred: {e}")
