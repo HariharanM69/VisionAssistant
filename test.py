@@ -66,8 +66,8 @@ if image:
         voice = tts(description)
         audio_base64 = base64.b64encode(voice.read()).decode('utf-8')
         components.html(f"""
-                <section hidden>
-                    <audio id="audio" controls autoplay>
+                <section >
+                    <audio id="audio" controls >
                         <source src="data:audio/mp3;base64,{audio_base64}" type="audio/mp3">
                     </audio>
                 </section>
