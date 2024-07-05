@@ -63,7 +63,7 @@ def encode_image(image_data):
 
 
 def vision(image, speech):
-    base64_image = encode_image(file_path)
+    base64_image = encode_image(image)
     response = honey.chat.completions.create(
         model="gpt-4o",
         messages=[{
@@ -99,23 +99,24 @@ if image:
     st.image(image_data, caption='Captured Image', use_column_width=True)
     try:
         speech = whisper_stt(openai_api_key=st.secrets['OPENAI']['OPENAI_API_KEY'], language = 'en')
-        description = vision(image_data, speech)
-        st.write("Vision Analysis Result:")
-        tts = tts(description)
-        audio_base64 = base64.b64encode(tts.read()).decode('utf-8')
-        components.html(f"""
-                <section hidden>
-                    <audio id="audio" controls>
-                        <source src="data:audio/mp3;base64,
-                        {audio_base64}" type="audio/mp3">
-                    </audio>
-                </section>
-                <script>
-            var audioElement = document.getElementById('audio');
-            audioElement.currentTime = 0; // Ensure playback starts from the beginning
-            audioElement.play();
-        </script>
-                """,height=0)
-        st.write(description)
+        if speech:
+            description = vision(image_data, speech)
+            st.write("Vision Analysis Result:")
+            tts = tts(description)
+            audio_base64 = base64.b64encode(tts.read()).decode('utf-8')
+            components.html(f"""
+                    <section hidden>
+                        <audio id="audio" controls>
+                            <source src="data:audio/mp3;base64,
+                            {audio_base64}" type="audio/mp3">
+                        </audio>
+                    </section>
+                    <script>
+                var audioElement = document.getElementById('audio');
+                audioElement.currentTime = 0; // Ensure playback starts from the beginning
+                audioElement.play();
+            </script>
+                    """,height=0)
+            st.write(description)
     except Exception as e:
         st.error(f"An error occurred: {e}")
