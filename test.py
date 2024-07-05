@@ -106,9 +106,9 @@ image = st.camera_input('', help="Show anything within this frame")
 
 
 if image:
-    st.write("Executing")
     image_data = image.getvalue()
     st.image(image_data, caption='Captured Image', use_column_width=True)
+    st.write("Use the button below as Speech-to-Text")
     try:
         speech = whisper_stt(openai_api_key=st.secrets['OPENAI']['OPENAI_API_KEY'], language = 'en')
         if speech:
