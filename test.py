@@ -58,6 +58,16 @@ def whisper_stt(openai_api_key=None, start_prompt="Start recording", stop_prompt
     return output
 
 
+def tts(description):
+    response = honey.audio.speech.create(
+        model="tts-1",
+        voice="nova",
+        input=description
+    )
+    voice = response.content
+    return io.BytesIO(voice)
+
+
 def encode_image(image_data):
     return base64.b64encode(image_data).decode('utf-8')
 
@@ -77,7 +87,9 @@ def vision(image, speech):
         }, {
             "role":
                 "user",
-            "content": [{
+            "content": [
+                {"type": "text", "text": f"{speech}"},
+                {
                 "type": "image_url",
                 "image_url": {
                     "url": f"data:image/jpeg;base64,{base64_image}"
@@ -101,8 +113,9 @@ if image:
         speech = whisper_stt(openai_api_key=st.secrets['OPENAI']['OPENAI_API_KEY'], language = 'en')
         if speech:
             description = vision(image_data, speech)
-            st.write("Vision Analysis Result:")
             tts = tts(description)
+            st.write("You : " + speech)
+            st.write("Vision Analysis Result:")
             audio_base64 = base64.b64encode(tts.read()).decode('utf-8')
             components.html(f"""
                     <section hidden>
