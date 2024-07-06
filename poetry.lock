@@ -992,6 +992,17 @@ files = [
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pypng"
+version = "0.20220715.0"
+description = "Pure Python library for saving and loading PNG images"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pypng-0.20220715.0-py3-none-any.whl", hash = "sha256:4a43e969b8f5aaafb2a415536c1a8ec7e341cd6a3f957fd5b5f32a4cfeed902c"},
+    {file = "pypng-0.20220715.0.tar.gz", hash = "sha256:739c433ba96f078315de54c0db975aee537cbc3e1d0ae4ed9aab0ca1e427e2c1"},
+]
+
+[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 description = "Extensions to the standard Python datetime module"
@@ -1015,6 +1026,29 @@ files = [
     {file = "pytz-2024.1-py2.py3-none-any.whl", hash = "sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319"},
     {file = "pytz-2024.1.tar.gz", hash = "sha256:2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812"},
 ]
+
+[[package]]
+name = "qrcode"
+version = "7.4.2"
+description = "QR Code image generator"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "qrcode-7.4.2-py3-none-any.whl", hash = "sha256:581dca7a029bcb2deef5d01068e39093e80ef00b4a61098a2182eac59d01643a"},
+    {file = "qrcode-7.4.2.tar.gz", hash = "sha256:9dd969454827e127dbd93696b20747239e6d540e082937c90f14ac95b30f5845"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+pypng = "*"
+typing-extensions = "*"
+
+[package.extras]
+all = ["pillow (>=9.1.0)", "pytest", "pytest-cov", "tox", "zest.releaser[recommended]"]
+dev = ["pytest", "pytest-cov", "tox"]
+maintainer = ["zest.releaser[recommended]"]
+pil = ["pillow (>=9.1.0)"]
+test = ["coverage", "pytest"]
 
 [[package]]
 name = "referencing"
@@ -1444,4 +1478,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10.0,<3.12"
-content-hash = "462e9d7babc7017d11306661d8ec52a3cd448f1dc4946cc6bb2a8b681f34412c"
+content-hash = "9074e8c9095b0724a4b926d47227e20c3f029c22e78ccaf83a281627dd609614"

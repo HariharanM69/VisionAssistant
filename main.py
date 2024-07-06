@@ -1,12 +1,23 @@
-import streamlit as st
-from openai import OpenAI
+import qrcode
 
-client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])
+# URL to be encoded in the QR code
+url = "https://hm69visionassistant-test.streamlit.app/"
 
-def pic2desc()
+# Create a QR code
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4,
+)
+qr.add_data(url)
+qr.make(fit=True)
 
-def tts()
+# Create an image from the QR Code instance
+img = qr.make_image(fill='black', back_color='white')
 
-def stt()
+# Save the image to a file
+img_path = "vision_assistant_qr_code.png"
+img.save(img_path)
 
-st.write()
+img_path
