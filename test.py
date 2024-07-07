@@ -112,7 +112,8 @@ if image:
     try:
         speech = whisper_stt(openai_api_key=st.secrets['OPENAI']['OPENAI_API_KEY'], language = 'en')
         if speech:
-            description = vision(image_data, speech)
+            with st.status("Visualizing..."):
+                description = vision(image_data, speech)
             tts = tts(description)
             st.write("You : " + speech)
             st.write("Vision Analysis Result:")
