@@ -114,23 +114,23 @@ if image:
         if speech:
             with st.status("Visualizing..."):
                 description = vision(image_data, speech)
-            tts = tts(description)
-            st.write("You : " + speech)
-            st.write("Vision Analysis Result:")
-            audio_base64 = base64.b64encode(tts.read()).decode('utf-8')
-            components.html(f"""
-                    <section hidden>
-                        <audio id="audio" controls>
-                            <source src="data:audio/mp3;base64,
-                            {audio_base64}" type="audio/mp3">
-                        </audio>
-                    </section>
-                    <script>
-                var audioElement = document.getElementById('audio');
-                audioElement.currentTime = 0; // Ensure playback starts from the beginning
-                audioElement.play();
-            </script>
-                    """,height=0)
-            st.write(description)
+                tts = tts(description)
+                st.write("You : " + speech)
+                st.write("Vision Analysis Result:")
+                audio_base64 = base64.b64encode(tts.read()).decode('utf-8')
+                components.html(f"""
+                        <section hidden>
+                            <audio id="audio" controls>
+                                <source src="data:audio/mp3;base64,
+                                {audio_base64}" type="audio/mp3">
+                            </audio>
+                        </section>
+                        <script>
+                    var audioElement = document.getElementById('audio');
+                    audioElement.currentTime = 0; // Ensure playback starts from the beginning
+                    audioElement.play();
+                </script>
+                        """,height=0)
+                st.write(description)
     except Exception as e:
         st.error(f"An error occurred: {e}")
